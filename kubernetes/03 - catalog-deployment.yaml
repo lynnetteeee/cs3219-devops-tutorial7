@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-deployment
+  namespace: cs3219
+  labels:
+    app: catalog-service
+spec:
+  replicas: 1  
+  selector:
+    matchLabels:
+      app: catalog-service
+  template:
+    metadata:
+      labels:
+        app: catalog-service
+    spec:
+      containers:
+      - name: catalog-service
+        image: lynnetteeee/catalog-service:1.0.0
+        ports:
+        - containerPort: 8080
